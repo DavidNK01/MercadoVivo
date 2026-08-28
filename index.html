@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mercado Vivo — Compra, vende y pide a domicilio en Cuba</title>
+  <title>Vitrina — Compra, vende y pide a domicilio en Cuba</title>
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
@@ -42,9 +42,15 @@
     <div id="rejilla-productos" class="rejilla-vitrinas"></div>
   </main>
 
-  <p class="pie">Mercado Vivo — plataforma comunitaria de comercio y mensajería. Hecho en Cuba, para Cuba.</p>
+  <p class="pie">Vitrina — plataforma comunitaria de comercio y mensajería. Hecho en Cuba, para Cuba.</p>
 
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    // Respaldo: si el primer servicio no cargó (conexión inestable), usa uno alterno.
+    if (typeof window.supabase === "undefined") {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"><\/script>');
+    }
+  </script>
   <script src="js/supabase-config.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/catalogo.js"></script>

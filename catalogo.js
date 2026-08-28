@@ -44,6 +44,11 @@ async function cargarCatalogo({ texto = "", provincia = "", tipo = "" } = {}) {
   const contenedor = document.getElementById("rejilla-productos");
   contenedor.innerHTML = `<p class="vacio">Cargando vitrinas…</p>`;
 
+  if (!clienteSupabase) {
+    contenedor.innerHTML = `<p class="mensaje-error">No se pudo conectar con la base de datos (${errorConfiguracionSupabase || "revisa tu internet"}). Si eres tú configurando el sitio: recuerda editar js/supabase-config.js con tu URL y clave de Supabase.</p>`;
+    return;
+  }
+
   let consulta = clienteSupabase
     .from("productos_servicios")
     .select("*, tiendas(nombre, provincia)")
