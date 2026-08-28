@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — Vitrina</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor">
+      <a class="marca" href="index.html">Vitrina<span class="punto">.</span></a>
+      <div class="nav-usuario" id="nav-usuario"></div>
+    </div>
+  </header>
+
+  <div class="pantalla-centrada">
+    <div class="tarjeta" style="width:100%; max-width:420px;">
+      <h2>Entrar a tu cuenta</h2>
+      <p style="margin-top:-8px; opacity:0.7; font-size:0.9rem;">Compra, vende o reparte — todo desde el mismo acceso.</p>
+
+      <form class="formulario" id="form-login" style="margin-top:16px;">
+        <div id="zona-mensaje"></div>
+        <div class="campo">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" required autocomplete="email" />
+        </div>
+        <div class="campo">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" required autocomplete="current-password" />
+        </div>
+        <button class="boton boton-primario boton-ancho" type="submit">Entrar</button>
+      </form>
+
+      <p style="margin-top:16px; font-size:0.9rem;">
+        ¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    pintarBarraUsuario();
+
+    document.getElementById("form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const zona = document.getElementById("zona-mensaje");
+      zona.innerHTML = "";
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        await iniciarSesion({ email, password });
+        const perfil = await obtenerPerfilActual();
+        irAPanelSegunRol(perfil ? perfil.rol : "cliente");
+      } catch (err) {
+        zona.innerHTML = `<p class="mensaje-error">${err.message === "Invalid login credentials" ? "Correo o contraseña incorrectos." : err.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

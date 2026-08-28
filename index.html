@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitrina — Compra, vende y pide a domicilio en Cuba</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor">
+      <a class="marca" href="index.html">Vitrina<span class="punto">.</span></a>
+      <div class="nav-usuario" id="nav-usuario"></div>
+    </div>
+  </header>
+
+  <section class="heroe">
+    <div class="contenedor">
+      <div class="eyebrow">Productos · Servicios · Mensajería</div>
+      <h1>Todo lo que se vende en tu cuadra, en una sola calle.</h1>
+      <p>Vendedores, prestadores de servicio y repartidores conectados directamente con clientes en toda Cuba.</p>
+
+      <form class="buscador" id="form-buscador">
+        <input type="text" id="filtro-texto" placeholder="Buscar productos o servicios…" />
+        <select id="filtro-provincia">
+          <option value="">Toda Cuba</option>
+        </select>
+        <select id="filtro-tipo">
+          <option value="">Todo tipo</option>
+          <option value="fisico">Productos</option>
+          <option value="digital">Digital</option>
+          <option value="servicio_domicilio">Servicios a domicilio</option>
+        </select>
+        <button class="boton boton-primario" type="submit">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="reja"></div>
+
+  <main class="contenedor">
+    <div id="rejilla-productos" class="rejilla-vitrinas"></div>
+  </main>
+
+  <p class="pie">Vitrina — plataforma comunitaria de comercio y mensajería. Hecho en Cuba, para Cuba.</p>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>

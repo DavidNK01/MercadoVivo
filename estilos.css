@@ -1,0 +1,340 @@
+/* ============================================================
+   SISTEMA DE DISEÑO — Plataforma Marketplace Cuba
+   Concepto: caminar por una calle de La Habana Vieja mirando
+   las vitrinas. Cada producto/tienda es una "ventana" con
+   una franja de reja (balcón colonial) como sello visual.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+  /* Paleta con nombre */
+  --verde-malecon: #0D3B36;   /* fondo principal, mar al atardecer */
+  --verde-malecon-2: #124942; /* superficies elevadas sobre el fondo oscuro */
+  --papel: #F7EFE0;           /* superficie clara, contenido y tarjetas */
+  --amarillo-almendron: #F2A93C; /* acento primario, color de almendrón clásico */
+  --rosa-fachada: #E5587A;    /* acento secundario, fachadas de La Habana */
+  --azul-cielo: #4FB6C7;      /* enlaces, información, estados "en camino" */
+  --texto-oscuro: #14231F;    /* texto sobre papel */
+  --texto-claro: #F7EFE0;     /* texto sobre fondo oscuro */
+  --linea: rgba(20, 35, 31, 0.12);
+
+  --fuente-display: 'Fraunces', Georgia, serif;
+  --fuente-cuerpo: 'Inter', system-ui, -apple-system, sans-serif;
+  --fuente-datos: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radio: 14px;
+  --sombra: 0 8px 24px rgba(13, 59, 54, 0.16);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--verde-malecon);
+  color: var(--texto-oscuro);
+  font-family: var(--fuente-cuerpo);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 0.4em;
+}
+
+a { color: var(--azul-cielo); }
+
+.contenedor {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  background: var(--verde-malecon);
+  color: var(--texto-claro);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid rgba(247, 239, 224, 0.12);
+}
+
+.encabezado .contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.marca {
+  font-family: var(--fuente-display);
+  font-size: 1.4rem;
+  color: var(--texto-claro);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.marca .punto {
+  color: var(--amarillo-almendron);
+}
+
+.nav-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: none;
+  font-family: var(--fuente-cuerpo);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.boton:active { transform: scale(0.97); }
+
+.boton-primario {
+  background: var(--amarillo-almendron);
+  color: var(--texto-oscuro);
+}
+.boton-primario:hover { box-shadow: 0 4px 14px rgba(242, 169, 60, 0.45); }
+
+.boton-secundario {
+  background: transparent;
+  color: var(--texto-claro);
+  border: 1px solid rgba(247, 239, 224, 0.4);
+}
+.boton-secundario:hover { border-color: var(--texto-claro); }
+
+.boton-fantasma {
+  background: transparent;
+  color: var(--verde-malecon);
+  border: 1px solid var(--linea);
+}
+
+.boton-ancho { width: 100%; }
+
+/* ---------- Héroe: la calle / vitrinas ---------- */
+.heroe {
+  color: var(--texto-claro);
+  padding: 48px 0 32px;
+}
+
+.heroe .eyebrow {
+  font-family: var(--fuente-datos);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--amarillo-almendron);
+}
+
+.heroe h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  max-width: 12ch;
+}
+
+.heroe p {
+  max-width: 42ch;
+  opacity: 0.85;
+  font-size: 1.02rem;
+}
+
+/* Buscador */
+.buscador {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.buscador input,
+.buscador select,
+.campo input,
+.campo select,
+.campo textarea {
+  font-family: var(--fuente-cuerpo);
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  background: var(--papel);
+  color: var(--texto-oscuro);
+}
+
+.buscador input { flex: 1; min-width: 180px; }
+
+/* ---------- La "reja": franja decorativa firma del sitio ---------- */
+.reja {
+  height: 10px;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    100deg,
+    var(--verde-malecon) 0px,
+    var(--verde-malecon) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+  opacity: 0.5;
+}
+
+/* ---------- Tarjetas de vitrina (producto / tienda) ---------- */
+.rejilla-vitrinas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 28px 0 60px;
+}
+
+.vitrina {
+  background: var(--papel);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--texto-oscuro);
+  transition: transform 0.18s ease;
+}
+.vitrina:hover { transform: translateY(-3px); }
+
+.vitrina .imagen {
+  aspect-ratio: 4 / 3;
+  background: var(--verde-malecon-2);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(247, 239, 224, 0.4);
+  font-family: var(--fuente-datos);
+  font-size: 0.75rem;
+}
+
+.vitrina .cuerpo {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.vitrina .titulo {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.vitrina .tienda-nombre {
+  font-size: 0.78rem;
+  opacity: 0.65;
+}
+
+.vitrina .precio {
+  font-family: var(--fuente-datos);
+  font-weight: 500;
+  color: var(--verde-malecon);
+  margin-top: auto;
+  font-size: 1.02rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  font-family: var(--fuente-datos);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  width: fit-content;
+}
+.etiqueta-fisico { background: rgba(79, 182, 199, 0.16); color: #1b6b76; }
+.etiqueta-digital { background: rgba(229, 88, 122, 0.14); color: #a8355a; }
+.etiqueta-servicio_domicilio { background: rgba(242, 169, 60, 0.2); color: #8a5c10; }
+
+/* ---------- Tarjetas / formularios genéricos ---------- */
+.tarjeta {
+  background: var(--papel);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 28px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 420px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.pantalla-centrada {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--verde-malecon);
+  padding: 32px 16px;
+}
+
+.mensaje-error {
+  background: rgba(229, 88, 122, 0.14);
+  color: #a8355a;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+}
+
+.mensaje-exito {
+  background: rgba(79, 182, 199, 0.14);
+  color: #1b6b76;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+}
+
+.vacio {
+  color: rgba(247, 239, 224, 0.6);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.pie {
+  color: rgba(247, 239, 224, 0.5);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 28px 0 40px;
+}
+
+@media (max-width: 640px) {
+  .encabezado .contenedor { flex-wrap: wrap; }
+  .heroe { padding: 32px 0 20px; }
+}
