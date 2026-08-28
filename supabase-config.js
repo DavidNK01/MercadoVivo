@@ -6,8 +6,8 @@
 // 3. Copia "Project URL" y "anon public key" aquí abajo
 // ============================================================
 
-const SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
-const SUPABASE_ANON_KEY = "TU-CLAVE-ANON-PUBLICA";
+const SUPABASE_URL = "https://ujpgsamhdiutpobsttbr.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_zZWj1gWvTCBUmxKr2odusg_aymMYInl";
 
 // Cliente global reutilizado por todas las páginas.
 // Se crea de forma "defensiva": si la librería de Supabase no llegó a
